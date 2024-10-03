@@ -1,0 +1,36 @@
+{% extends "./base.html" %}
+
+{% block title%}
+    Gestión de Clientes
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Edición de Cliente</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarCliente/" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" name="numCuit" value="{{cliente.cuit}}" class="form-control" placeholder="CUIT" minlength="11" maxlength="11" readonly required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmpresa" value="{{cliente.empresa}}" class="form-control" placeholder="Nombre de la Empresa" minlength="1" maxlength="20" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmpleado" value="{{cliente.empleado}}" class="form-control" placeholder="Nombre del Empleado" minlength="1" maxlength="20" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtCargo" value="{{cliente.cargo}}" class="form-control" placeholder="Cargo del Empleado" minlength="1" maxlength="30" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">
+                                GUARDAR
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
